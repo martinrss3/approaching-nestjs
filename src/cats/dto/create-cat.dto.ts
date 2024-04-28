@@ -11,4 +11,7 @@ export class CreateCatDto {
   @IsString()
   @IsOptional()
   breed: string;
+
+  @IsString()
+  owner: string;
 }

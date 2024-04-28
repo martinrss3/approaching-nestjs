@@ -12,23 +12,24 @@ export class CatsService {
     private catsRepository: Repository<Cat>,
   ) {}
 
-  create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+  async create(createCatDto: CreateCatDto) {
+    const cat = this.catsRepository.create(createCatDto);
+    return await this.catsRepository.save(cat);
   }
 
-  findAll() {
-    return this.catsRepository.find();
+  async findAll() {
+    return await this.catsRepository.find();
   }
 
-  findOne(id: number) {
-    return this.catsRepository.findOneBy({ id });
+  async findOne(id: number) {
+    return await this.catsRepository.findOneBy({ id });
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+  async update(id: number, updateCatDto: UpdateCatDto) {
+    return await this.catsRepository.update(id, updateCatDto);
   }
 
-  remove(id: number) {
-    return this.catsRepository.delete(id);
+  async remove(id: number) {
+    return await this.catsRepository.softDelete(id);
   }
 }

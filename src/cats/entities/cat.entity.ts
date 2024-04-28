@@ -19,6 +19,9 @@ export class Cat {
   @Column()
   breed: string;
 
+  @Column()
+  owner: string;
+
   @DeleteDateColumn()
   deletedAt: Date;
 }
